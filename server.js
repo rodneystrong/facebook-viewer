@@ -19,4 +19,13 @@ passport.use(new FacebookStrategy({
   return done(null, profile);
 }));
 
+//Define auth endpoints
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback', passsport.authenticate('facebook', {
+  successRedirect: '/me',
+  failureRedirect: '/'
+}))
+//the above steps are passport steps. Very important to understand that.
+
 app.listen(9090);
