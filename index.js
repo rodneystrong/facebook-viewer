@@ -4,6 +4,8 @@ var passport = require('passport');
 // var passsportFacebook = require('passsportFacebook');
 //.strategy
 var FacebookStrategy = require('passport-facebook').Strategy;
+//how do you require a file in Node? The code below
+var myKeys = require('./keys');
 
 var app = express();
 
@@ -12,8 +14,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new FacebookStrategy({
-  clientID: '763275367148700',
-  clientSecret: '5c93663a52e1f589c8da962c1d63ec90',
+  //Initially you put your keys here. but now we removed them and put them in a new
+  //file called keys.js
+  //move you keys to a new file, require that file, call those keys via an object
+  clientID: 'myKeys.facebookKey',
+  clientSecret: 'myKeys.facebookSecret',
   callbackURL: 'http://localhost:3000/auth/facebook/callback'
 }, function(token, refreshToken, profile, done) {
   return done(null, profile);
