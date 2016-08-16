@@ -1,7 +1,7 @@
 var express = require('express');
 var expressSession = require('express-session');
 var passport = require('passport');
-var passsport-facebook = require('passsportFacebook');
+// var passsportFacebook = require('passsportFacebook');
 //.strategy
 var FacebookStrategy = require('passport-facebook').strategy;
 

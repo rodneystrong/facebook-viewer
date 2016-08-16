@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/rodneystrong/facebook-viewer/issues"
   },
-  "homepage": "https://github.com/rodneystrong/facebook-viewer#readme"
+  "homepage": "https://github.com/rodneystrong/facebook-viewer#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "passport": "^0.3.2"
+  }
 }
