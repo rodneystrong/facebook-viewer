@@ -3,13 +3,13 @@ var expressSession = require('express-session');
 var passport = require('passport');
 // var passsportFacebook = require('passsportFacebook');
 //.strategy
-var FacebookStrategy = require('passport-facebook').strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 var app = express();
 
-app.use(session({secret: "nerds and thugs"}));
-app.use(passsport.initialize());
-app.use(passsport.session());
+app.use(expressSession({secret: "nerds and thugs"}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.use(new FacebookStrategy({
   clientID: '763275367148700',
@@ -22,7 +22,7 @@ passport.use(new FacebookStrategy({
 //Define auth endpoints
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
-app.get('/auth/facebook/callback', passsport.authenticate('facebook', {
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
   successRedirect: '/me',
   failureRedirect: '/'
 }))
