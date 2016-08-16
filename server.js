@@ -28,4 +28,15 @@ app.get('/auth/facebook/callback', passsport.authenticate('facebook', {
 }))
 //the above steps are passport steps. Very important to understand that.
 
+//Create the deserialize/serilize methods on passport
+//serialize just means takes in a string. deserialize means the opposite
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+
 app.listen(9090);
