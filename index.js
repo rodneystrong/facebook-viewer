@@ -5,7 +5,7 @@ var passport = require('passport');
 //.strategy
 var FacebookStrategy = require('passport-facebook').Strategy;
 //how do you require a file in Node? The code below
-var myKeys = require('./keys');
+var myKeys = require('./keys.js');
 
 var app = express();
 
@@ -34,7 +34,8 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
 //the above steps are passport steps. Very important to understand that.
 
 //Create the deserialize/serilize methods on passport
-//serialize just means takes in a string. deserialize means the opposite
+//serialize just means takes in whatever and converts
+//it to a string. deserialize reverses that process
 passport.serializeUser(function(user, done) {
   //change the below from 'user' to 'profile'
   done(null, profile);
