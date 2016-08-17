@@ -17,8 +17,8 @@ passport.use(new FacebookStrategy({
   //Initially you put your keys here. but now we removed them and put them in a new
   //file called keys.js
   //move you keys to a new file, require that file, call those keys via an object
-  clientID: 'myKeys.facebookKey',
-  clientSecret: 'myKeys.facebookSecret',
+  clientID: myKeys.facebookKey,
+  clientSecret: myKeys.facebookSecret,
   callbackURL: 'http://localhost:3000/auth/facebook/callback'
 }, function(token, refreshToken, profile, done) {
   return done(null, profile);
@@ -36,12 +36,12 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
 //Create the deserialize/serilize methods on passport
 //serialize just means takes in whatever and converts
 //it to a string. deserialize reverses that process
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function(profile, done) {
   //change the below from 'user' to 'profile'
   done(null, profile);
 });
 
-passport.deserializeUser(function(obj, done) {
+passport.deserializeUser(function(deserializeUser, done) {
   done(null, deserializeUser);
 });
 
